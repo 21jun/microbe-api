@@ -1,0 +1,20 @@
+version: '3'
+services:
+  flask:
+      container_name: flask-imagenet
+      image: "21jun/imagenet"
+      ports:
+       - "5000:5000"
+      networks:
+      - backend
+  nginx:
+      container_name: flask-nginx
+      image: "21jun/flask-imagenet-nginx"
+      ports:
+       - "80:80"
+      networks:
+       - backend
+
+networks:
+  backend:
+    driver: bridge

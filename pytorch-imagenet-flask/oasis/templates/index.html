@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        function uploadFile() {
+            var form = $('#FILE_FORM')[0];
+            var formData = new FormData(form);
+            var label = "Lable"
+            formData.append("file", $("#FILE_TAG")[0].files[0]);
+
+            var settings = {
+                "url": "/predict",
+                "method": "POST",
+                "timeout": 0,
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": formData
+            };
+
+            $.ajax(settings).done(function (response) {
+                var label = JSON.parse(response)['class_name']
+                var confidence = JSON.parse(response)['confidence']
+                document.getElementById('label').innerHTML = label
+                document.getElementById('confidence').innerHTML = confidence
+                console.log(confidence)
+
+            });
+        }
+
+        $(function () {
+            $("#FILE_TAG").on('change', function () {
+
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#srcimg').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <form id="FILE_FORM" method="post" enctype="multipart/form-data">
+        <input type="file" id="FILE_TAG" name="FILE_TAG" onclick="LoadImg(this)">
+        <a class="ui-shadow ui-btn ui-corner-all" href="javascript:uploadFile();">전송</a>
+    </form>
+
+    <img id="srcimg" src="" alt="이미지 준비중" />
+
+    <hr>
+    <h3 id="label">LABEL</h3>
+    <h3 id='confidence'>confidence</h3>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+    "0": ["n01440764", "Acinetobacter.baumanii"],
+    "1": ["n01443537", "Actinomyces.israeli"],
+    "2": ["n01484850", "Bacteroides.fragilis"],
+    "3": ["n01491361", "Bifidobacterium.spp"],
+    "4": ["n01491361", "Candida.albicans"],
+    "5": ["n01491361", "Clostridium.perfringens"],
+    "6": ["n01491361", "Enterococcus.faecalis"],
+    "7": ["n01491361", "Enterococcus.faecium"],
+    "8": ["n01491361", "Escherichia.coli"],
+    "9": ["n01491361", "Fusobacterium"],
+    "10": ["n01491361", "Lactobacillus.crispatus"],
+    "11": ["n01491361", "Listeria.monocytogenes"],
+    "12": ["n01491361", "Micrococcus.spp"],
+    "13": ["n01491361", "Veionella"],
+    "14": ["n01491361", "None"]
+}
